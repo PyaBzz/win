@@ -1,4 +1,5 @@
 Add-Type -AssemblyName 'PresentationFramework'
+.".\Functions.ps1"
 
 #==================  Disable automatic monitor turning off  ==================
 $ShouldProceed = 'No'
@@ -26,6 +27,12 @@ $ShouldProceed = [System.Windows.MessageBox]::Show("Tidy up the taskbar?", "Plea
 
 if ($ShouldProceed -eq 'Yes') {
     reg import "..\RegistryTweaks\Taskbar.reg"
+    bazUnpin "Microsoft Edge"
+    bazUnpin "Microsoft Store"
+    bazUnpin "Store"
+    bazUnpin "File Explorer"
+    bazUnpin "Explorer"
+    bazUnpin "Mail"
 }
 else {
     Write-Output 'Skipped'  
