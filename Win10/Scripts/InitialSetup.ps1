@@ -26,6 +26,12 @@ $ShouldProceed = PopupConfirm("Clean-up the taskbar?");
 
 if ($ShouldProceed) {
     reg import "..\RegistryTweaks\Taskbar.reg"
+    TaskbarUnpin "Microsoft Edge"
+    TaskbarUnpin "Microsoft Store"
+    TaskbarUnpin "Store"
+    TaskbarUnpin "File Explorer"
+    TaskbarUnpin "Explorer"
+    TaskbarUnpin "Mail"
 }
 else {
     Write-Output 'Skipped'  
