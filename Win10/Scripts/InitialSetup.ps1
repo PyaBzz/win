@@ -38,6 +38,16 @@ else {
 } 
 
 #======================================================
+$ShouldProceed = PromptConfirm("Set updates to important/stable only?");
+
+if ($ShouldProceed) {
+    reg import "..\RegistryTweaks\Updates.reg"
+}
+else {
+    Write-Output 'Skipped'  
+} 
+
+#======================================================
 $ShouldProceed = PromptConfirm("Restart for the changes to take effect?");
 
 if ($ShouldProceed) {
