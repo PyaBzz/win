@@ -35,6 +35,23 @@ if ($ShouldProceed) {
 }
 else {
     Write-Output 'Skipped'  
+}
+
+#======================================================
+$ShouldProceed = PromptConfirm("Disable scheduled disk defrag?");
+
+if ($ShouldProceed) {
+    if ((Get-ScheduledTask -TaskName 'ScheduledDefrag').State -eq 'Ready') {
+        Write-Output "Task found. Disabling ..."
+        Disable-ScheduledTask -TaskName 'ScheduledDefrag' -TaskPath '\Microsoft\Windows\Defrag'
+    }
+    else {
+        Write-Output "Task not found or disabled."
+        Get-ScheduledTask -TaskName 'ScheduledDefrag'
+    }
+}
+else {
+    Write-Output 'Skipped'  
 } 
 
 #======================================================
