@@ -1,7 +1,19 @@
 .".\Functions.ps1"
 
 #======================================================
-$ShouldProceed = 'No'
+$ShouldProceed = PromptConfirm("Disable system restore?");
+
+if ($ShouldProceed) {
+    (Get-Partition).DriveLetter -match '^[A-Z]$' | ForEach-Object {
+        Disable-ComputerRestore $_":\"
+        Write-Host "Disabled on "$_":\"
+    }
+}
+else {
+    Write-Output 'Skipped'  
+} 
+
+#======================================================
 $ShouldProceed = PromptConfirm("Disable automatic monitor turning off?");
 
 if ($ShouldProceed) {
