@@ -37,6 +37,7 @@ else {
 $ShouldProceed = PromptConfirm("Clean-up the taskbar?");
 
 if ($ShouldProceed) {
+    Remove-Item "$env:AppData\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\*"
     reg import "..\RegistryTweaks\Taskbar.reg"
     TaskbarUnpin "Microsoft Edge"
     TaskbarUnpin "Microsoft Store"
