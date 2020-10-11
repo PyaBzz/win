@@ -1,4 +1,4 @@
-.".\Functions.ps1"
+.".\Scripts\Functions.ps1"
 
 #======================================================
 $ShouldProceed = PromptConfirm("Disable system restore?");
@@ -27,7 +27,7 @@ else {
 $ShouldProceed = PromptConfirm("Remove background images?");
 
 if ($ShouldProceed) {
-    reg import "..\RegistryTweaks\Backgrounds.reg"
+    reg import ".\RegistryTweaks\Backgrounds.reg"
 }
 else {
     Write-Output 'Skipped'  
@@ -38,7 +38,7 @@ $ShouldProceed = PromptConfirm("Clean-up the taskbar?");
 
 if ($ShouldProceed) {
     Remove-Item "$env:AppData\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\*"
-    reg import "..\RegistryTweaks\Taskbar.reg"
+    reg import ".\RegistryTweaks\Taskbar.reg"
     TaskbarUnpin "Microsoft Edge"
     TaskbarUnpin "Microsoft Store"
     TaskbarUnpin "Store"
@@ -71,7 +71,7 @@ else {
 $ShouldProceed = PromptConfirm("Set updates to important/stable only?");
 
 if ($ShouldProceed) {
-    reg import "..\RegistryTweaks\Updates.reg"
+    reg import ".\RegistryTweaks\Updates.reg"
 }
 else {
     Write-Output 'Skipped'  
